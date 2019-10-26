@@ -25,13 +25,46 @@
       </tr>
       </tbody>
     </table>
+    <button @click="exportPdf">Export PDF</button>
   </div>
 </template>
 
 <script>
+    import jsPDF from 'jspdf'
+    import 'jspdf-autotable';
     export default {
-        props: ["newNetworksList"]
+        data(){
+          return{
+          }
+        },
+        props: ["newNetworksList"],
+        methods : {
+            exportPdf(){
+                var columns = [
+                    {title:"Ag Adi",dataKey :"agIsmi"},
+                    {title:"Host Sayisi",dataKey :"hostSayisi"},
+                    {title:"Ag Adresi",dataKey :"agAdresi"},
+                    {title:"Baslangic",dataKey :"ipBaslangıc"},
+                    {title:"Bitis",dataKey :"ipBitis"},
+                    {title:"Yayin",dataKey :"yayın"},
+                    {title:"Alt Ag Adresi",dataKey :"decMask"},
+                ];
+                var doc = new jsPDF('p','pt');
+                doc.autoTable(columns,this.newNetworksList);
+                doc.save("table.pdf")
+            }
+        },
+
     }
+    // agIsmi: this.networkList[i].netWorkName,
+    //     hostSayisi: this.networkList[i].hostCount,
+    //     agAdresi: this.agAdresleri[i - 1],
+    //     ipBaslangıc: this.ipAddressMerger(this.ipIncrease(1, this.ipAddressParser(this.agAdresleri[i - 1]))),
+    //     ipBitis: this.ipAddressMerger(this.addressDesc(this.ipAddressParser(this.agAdresleri[i]), 2)),
+    //     maxAralık: ipExps[i],
+    //     yayın: this.ipAddressMerger(this.addressDesc(this.ipAddressParser(this.agAdresleri[i]), 1)),
+    //     decMask: this.convertToBinary(this.maskBit[i])
+
 </script>
 
 <style scoped>
