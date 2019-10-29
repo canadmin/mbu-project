@@ -31,7 +31,6 @@
         watch: {
             networks: function (nevValue) {
                 this.allNetWorks = nevValue;
-                this.allNetWorks = _.orderBy(this.allNetWorks, "hostCount", "desc");
             }
         }
     }

@@ -25,7 +25,7 @@
       </tr>
       </tbody>
     </table>
-    <button @click="exportPdf">Export PDF</button>
+    <button class="save-button" @click="exportPdf">Export PDF</button>
   </div>
 </template>
 
@@ -56,14 +56,6 @@
         },
 
     }
-    // agIsmi: this.networkList[i].netWorkName,
-    //     hostSayisi: this.networkList[i].hostCount,
-    //     agAdresi: this.agAdresleri[i - 1],
-    //     ipBaslangıc: this.ipAddressMerger(this.ipIncrease(1, this.ipAddressParser(this.agAdresleri[i - 1]))),
-    //     ipBitis: this.ipAddressMerger(this.addressDesc(this.ipAddressParser(this.agAdresleri[i]), 2)),
-    //     maxAralık: ipExps[i],
-    //     yayın: this.ipAddressMerger(this.addressDesc(this.ipAddressParser(this.agAdresleri[i]), 1)),
-    //     decMask: this.convertToBinary(this.maskBit[i])
 
 </script>
 
@@ -77,5 +69,18 @@
     background-color: #60C4A9;
     color: white;
     cursor: pointer;
+  }
+  .save-button {
+    margin-left: 15px;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .15), 0 2px 3px rgba(0, 0, 0, .2);
+    background-color: white;
+    width: 100px;
+    color: #283e4a;
+  }
+
+  .save-button:hover{
+    background-color: #60C4A9;
+    color: white;
   }
 </style>
