@@ -3,7 +3,7 @@
     <div v-if="!isCalculated">
       <div>
         <div class="text-center mt-5">
-          <h3>Değişken Uzunluklu Alt Ağlara bölme(VLSM)</h3>
+          <h3>Değişken Uzunluklu Alt Ağlara bölme</h3>
         </div>
         <div class="mt-5">
           <input class="input-design pl-3" type="text" placeholder="Ağ adını giriniz" v-model="netWorkName">
