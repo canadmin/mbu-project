@@ -61,7 +61,6 @@
                     hostCount: this.hostCount
                 };
                 this.networkList.push(network);
-                // this.networkList = _.orderBy(this.networkList, "hostCount", "desc");
                 this.networkList = this.networkList.sort(function (a, b) {
                     return b - a
                 });
@@ -97,7 +96,7 @@
                 if (totalNetworkCount < 255) {
                     for (var i = 0; i < ipExps.length; i++) {
                         ipAddressList[ipAddressList.length - 1] += ipExps[i];
-                        this.agAdresleri.push(ipAddressList[0] + "." + ipAddressList[1] + "." + ipAddressList[2] + "." + ipAddressList[3]);
+                        this.agAdresleri.push(commonFunctions.ipAddressMerger(ipAddressList))
                     }
                 } else {
                     for (var i = 0; i < ipExps.length; i++) {
@@ -118,11 +117,10 @@
                             ipAddressList[1] += sayac2;
                             ipAddressList[2] += sayac;
                             ipAddressList[3] = total;
-                            this.agAdresleri.push(ipAddressList[0] + "." + ipAddressList[1] + "." + ipAddressList[2] + "." + ipAddressList[3]);
-
+                            this.agAdresleri.push(commonFunctions.ipAddressMerger(ipAddressList))
                         } else {
                             ipAddressList[ipAddressList.length - 1] += ipExps[i];
-                            this.agAdresleri.push(ipAddressList[0] + "." + ipAddressList[1] + "." + ipAddressList[2] + "." + ipAddressList[3]);
+                            this.agAdresleri.push(commonFunctions.ipAddressMerger(ipAddressList))
                         }
                     }
                 }
