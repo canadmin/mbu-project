@@ -31,7 +31,7 @@
     export default {
         data() {
             return {
-                activeComponent: "appVlsm"
+                activeComponent: "appVlsm",
             }
         },
         components: {
@@ -66,4 +66,5 @@
     height: 40px;
     background-color: #60C4A9;
   }
+
 </style>

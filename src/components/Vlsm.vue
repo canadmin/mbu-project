@@ -31,7 +31,7 @@
 <script>
     import Table from "./Table";
     import calculatedVlsm from "./calculatedVlsm";
-    import {commonFunctions} from "./formulas/common";
+    import {commonFunctions} from "../formulas/common";
     export default {
         data() {
             return {
