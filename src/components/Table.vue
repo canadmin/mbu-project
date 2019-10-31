@@ -31,6 +31,7 @@
         watch: {
             networks: function (nevValue) {
                 this.allNetWorks = nevValue;
+                console.log(this.allNetWorks)
             }
         }
     }

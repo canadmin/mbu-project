@@ -85,5 +85,17 @@ export const commonFunctions = {
       }
       return ipAdressList;
     },
+    networkListSort(networkList){
+       for(var i = 0; i<networkList.length; i++){
+          for (var j = i ; j < networkList.length; j++){
+            if(parseInt(networkList[i].hostCount)<parseInt(networkList[j].hostCount)){
+              var tempNetwork = networkList[i];
+              networkList[i] = networkList[j];
+              networkList[j] = tempNetwork;
+            }
+          }
+       }
+       return networkList;
+    }
 };
 

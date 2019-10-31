@@ -61,9 +61,7 @@
                     hostCount: this.hostCount
                 };
                 this.networkList.push(network);
-                this.networkList = this.networkList.sort(function (a, b) {
-                    return b - a
-                });
+                this.networkList = commonFunctions.networkListSort(this.networkList);
                 console.log(this.networkList);
             },
             calculate() {
