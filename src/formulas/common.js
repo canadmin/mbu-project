@@ -18,7 +18,7 @@ export const commonFunctions = {
       }
       bits += "0";
       var bitsList = bits.split(".");
-      var dec = []
+      var dec = [];
       for (var i = 0; i < bitsList.length - 1; i++) {
         dec.push(parseInt(bitsList[i], 2));
       }

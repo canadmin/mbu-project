@@ -5,10 +5,10 @@
         <div class="text-center mt-5">
           <span class="title">Alt Ağlara Bölme</span>
           <div class="mt-5">
-            <button class="standart-button">Değişken Alt Ağlara Bölme</button>
+            <button class="standart-button" @click="activeComponent='appVlsm'">Değişken Alt Ağlara Bölme</button>
           </div>
           <div class="mt-5">
-            <button class="standart-button">Sabit Alt Ağlara Bölme</button>
+            <button class="standart-button" @click="activeComponent='appFlsm'">Sabit Alt Ağlara Bölme</button>
           </div>
           <div class="mt-5 ">
             <button class="standart-button">Alt Ağ Hesaplama</button>
@@ -27,7 +27,7 @@
 
 <script>
     import Vlsm from "./components/Vlsm";
-
+    import flsm from "./components/flsm";
     export default {
         data() {
             return {
@@ -35,7 +35,8 @@
             }
         },
         components: {
-            appVlsm: Vlsm
+            appVlsm: Vlsm,
+            appFlsm : flsm
         }
     }
 </script>
