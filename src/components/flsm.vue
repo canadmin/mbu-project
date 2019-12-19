@@ -85,16 +85,12 @@
                         }
                     }
                 }
-                var x = 0;
-                do {
-                    largestDiff = Math.pow(2,x) - 2; // yapılmak istenen 2^ağ sayısından büyük bir üst bulma
-                    var requiredDiff = Math.pow(2,list.length);
-                    if(largestDiff<requiredDiff){
-                        x+=1;
-                        largestDiff = Math.pow(2,x) - 2
-                    }else break;
 
-                }while (x<33);
+                for(var i =0; i<ipExps.length ; i++){
+                    if(ipExps[i]>largestDiff){
+                        largestDiff = ipExps[i];
+                    }
+                }
                 console.log(largestDiff);
                 for(var i =0; i<ipExps.length ; i++){
                     ipExps[i] = largestDiff+2;
