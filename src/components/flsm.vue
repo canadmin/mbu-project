@@ -85,19 +85,27 @@
                         }
                     }
                 }
-
                 for(var i =0; i<ipExps.length ; i++){
                     if(ipExps[i]>largestDiff){
                         largestDiff = ipExps[i];
                     }
                 }
-                console.log(largestDiff);
+                var gerekliAgSayisi = 0;
+                for (var j = 0; j < 33; j++) {
+                    gerekliAgSayisi = Math.pow(2, j);
+                    if (gerekliAgSayisi >= this.networkList.length) {
+                        gerekliAgSayisi = j;
+
+                        break;
+                    }
+                }
+                console.log(gerekliAgSayisi);
+
                 for(var i =0; i<ipExps.length ; i++){
                     ipExps[i] = largestDiff+2;
                     console.log(ipExps[i]);
                 }
-
-                this.showIpRange(ipExps, networkIp, this.networkList);
+                this.showIpRange(ipExps, networkIp, this.networkList,subnetMask,gerekliAgSayisi);
             },
             networkStartIp(ip, slash) {
                 slash = commonFunctions.convertToBinary(32 - slash);// 255 255 liyi bulduk
@@ -114,7 +122,38 @@
                 var result = octet1 & octet2;
                 return result.toString();
             },
-            showIpRange(ipExps, ipParams, networks) {
+            showIpRange(ipExps, ipParams, networks,subnetmask,gerekliAgSayisi) {
+             // ip exps 3 tane ise -> 2^2 tane ağ bizim ihtiyacımızı karşılar
+                // ip adresi 192.168.0.0/24 ise
+                // 192.168.0.0000 0000-> 192.168.0.0
+                // 192.168.0.0100 0000 -> 192.168.0.64
+                // 192.168.0.1000 0000 -> 128
+                // 192.168.0.1100 0000 -> 192
+                /*
+                *  gelen ip params bizim başlangıç ip miz ilk önce gerekli mask biti buluyoruz
+                * gerekli ağ sayısından büyük ilk 2 kuvvetini alıcaz.
+                * sonrasında ipParamsın en sağından
+                * */
+
+                // /24 ise geriye 2^2 den 4 tane ağ olucak
+                // 24 son 8 tane host sayısını belirler
+                // 2^8 / 2^2 = 64
+                //dolayısıyla artış 64er olucak
+
+                // eğer /25 olsaydı 2^2 den 4 tane ağ olucak
+                // 25 son 7 tane host biti olucak
+                // 2^7 / 2^2 = 32
+                // artıs 32 er tane olucak
+                //subnet 32-subnet sayısı = 7 olsun
+                //gerekli ağ sayısı 5 olsun
+                //2^3 koşulu sağlar
+                // 2^7 / 2^3 = 16 artış miktarı
+                var bitDiff = 32-subnetmask;
+                var incAmount = Math.pow(2,bitDiff) / Math.pow(2,gerekliAgSayisi);
+                console.log("artış miktarı : "+incAmount);
+              for (var x in ipExps){
+                  ipExps[x] = incAmount;
+              }
                 var totalNetworkCount = 0;
                 for (var ipExp of ipExps) {
                     totalNetworkCount += ipExp;

@@ -112,9 +112,28 @@
                                     sayac2 += 1;
                                 }
                             }
+
                             ipAddressList[1] += sayac2;
                             ipAddressList[2] += sayac;
                             ipAddressList[3] = total;
+                            if(ipAddressList[2]>255){
+                                var exSayac = 0;
+                                while(ipAddressList[2]>255){
+                                    ipAddressList[2]-=256;
+                                    exSayac+=1;
+                                }
+                                ipAddressList[1]+=exSayac;
+
+                            }
+                            if(ipAddressList[1]>255){
+                                var exSayac2 = 0;
+                                while(ipAddressList[1]>255){
+                                    ipAddressList[1]-=256;
+                                    exSayac2+=1;
+                                }
+                                ipAddressList[0]+=exSayac2;
+
+                            }
                             this.agAdresleri.push(commonFunctions.ipAddressMerger(ipAddressList))
                         } else {
                             ipAddressList[ipAddressList.length - 1] += ipExps[i];
@@ -125,6 +144,7 @@
                 this.vlsmCalculate(ipParams, ipExps);
             },
             vlsmCalculate(startIpAddress, ipExps) {
+                console.log(this.agAdresleri)
                 console.log("ip exps  : " + ipExps)
                 for (var i = 0; i < this.agAdresleri.length; i++) { // ilk olarak girilen ağ adreslerine bakıcaz ve ip adresini alıcaz
                     if (i === 0) {

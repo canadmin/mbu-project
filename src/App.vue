@@ -1,6 +1,6 @@
 <template>
-  <div class="container bg-white main">
-    <div class="row mt-5">
+  <div class="container-fluid bg-white main">
+    <div class="row ">
       <div class="col-3 left-side">
         <div class="text-center mt-5">
           <span class="title">Alt Ağlara Bölme</span>
@@ -44,7 +44,7 @@
 <style>
   .left-side {
     background-color: #283e4a;
-    height: 80vh;
+    height: 100vh;
   }
 
   .right-side {
