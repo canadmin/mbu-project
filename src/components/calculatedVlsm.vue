@@ -1,4 +1,5 @@
 <template>
+  <div>
   <div class="mt-3 table-data">
     <table class="table table-striped">
       <thead>
@@ -24,7 +25,6 @@
       </tr>
       </tbody>
     </table>
-    <button class="save-button" @click="exportPdf">Export PDF</button>
     <div v-if="showModal" @close="showModal = false">
       <transition name="modal">
         <div class="modal-mask">
@@ -51,7 +51,12 @@
           </div>
         </div>
       </transition>
-    </div>  </div>
+    </div>
+  </div>
+    <div class="text-center">
+    <button class="save-button " @click="exportPdf">Export PDF</button>
+    </div>
+    </div>
 </template>
 
 <script>
@@ -94,7 +99,7 @@
 
 <style scoped>
   .table-data {
-    height: 350px;
+    height: 500px;
     overflow-y: auto;
   }
 

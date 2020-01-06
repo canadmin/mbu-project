@@ -11,7 +11,7 @@
             <button class="standart-button" @click="activeComponent='appFlsm'">Sabit Alt Ağlara Bölme</button>
           </div>
           <div class="mt-5 ">
-            <button class="standart-button">Alt Ağ Hesaplama</button>
+            <button class="standart-button"  @click="activeComponent='subnett'">Alt Ağ Hesaplama</button>
           </div>
         </div>
 
@@ -28,6 +28,7 @@
 <script>
     import Vlsm from "./components/Vlsm";
     import flsm from "./components/flsm";
+    import subnett from "./components/subnett";
     export default {
         data() {
             return {
@@ -36,7 +37,8 @@
         },
         components: {
             appVlsm: Vlsm,
-            appFlsm : flsm
+            appFlsm : flsm,
+            subnett
         }
     }
 </script>

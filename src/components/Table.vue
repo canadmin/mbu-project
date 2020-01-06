@@ -13,6 +13,7 @@
         <th scope="row">{{index +1}}</th>
         <td>{{network.netWorkName}}</td>
         <td>{{network.hostCount}}</td>
+        <td><button class="sil-butonu" @click="deleteNetwork(index)">Sil</button></td>
       </tr>
 
       </tbody>
@@ -33,6 +34,13 @@
                 this.allNetWorks = nevValue;
                 console.log(this.allNetWorks)
             }
+        },
+        methods:{
+            deleteNetwork(index){
+                console.log(index)
+                this.allNetWorks.splice(index, 1);
+
+            }
         }
     }
 </script>
@@ -41,5 +49,15 @@
   .table-data {
     height: 350px;
     overflow-y: auto;
+  }
+  .sil-butonu{
+    background-color: #ffffff;
+    color: red;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .15), 0 2px 3px rgba(0, 0, 0, .2);
+  }
+  .sil-butonu:hover{
+    background-color: red;
+    color: white;
   }
 </style>

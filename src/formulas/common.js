@@ -61,7 +61,6 @@ export const commonFunctions = {
     return gelenIp;
   },
   addressDesc(ipAdressList, desc) {
-
     if (ipAdressList[3] === 0) { // 192 168 0 0 -> 0 255
       if (ipAdressList[2] !== 0) {
           ipAdressList[2] -= 1;

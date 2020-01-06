@@ -6,18 +6,16 @@
           <h3>Değişken Uzunluklu Alt Ağlara bölme</h3>
         </div>
         <div class="mt-5">
+          Ağ Adı:
           <input class="input-design pl-3" type="text" placeholder="Ağ adını giriniz" v-model="netWorkName">
-          <input class="input-design ml-5 pl-3" type="text" placeholder="Host Sayısını giriniz" v-model="hostCount">
-        </div>
-        <div class="mt-5  mr-5">
-          <div>
-            <button class="save-button" @click="addNewNetWork">Kaydet</button>
-          </div>
+          <span class="ml-3">Host Sayısı :</span>
+          <input class="input-design  pl-3" type="text" placeholder="Host Sayısını giriniz" v-model="hostCount">
+          <button class="save-button" @click="addNewNetWork">Kaydet</button>
         </div>
       </div>
       <app-table :networks="networkList"></app-table>
       <div>
-        <div class="mt-5">
+        <div class="mt-5 float-right">
           <input class="input-design pl-3" type="text" placeholder="Ip Adresini giriniz" v-model="ipAddress">
           <button class="calculate-button" @click="calculate">Hesapla</button>
         </div>
@@ -205,16 +203,16 @@
   }
 
   .save-button {
-    margin-left: 453px;
+    margin-left: 25px;
     border: 0;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, .15), 0 2px 3px rgba(0, 0, 0, .2);
     background-color: white;
     width: 100px;
+    height: 35px;
     color: #283e4a;
   }
 
   .calculate-button {
-    margin-left: 300px;
     border: 0;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, .15), 0 2px 3px rgba(0, 0, 0, .2);
     background-color: white;

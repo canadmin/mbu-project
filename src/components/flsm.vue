@@ -6,18 +6,18 @@
           <h3>Sabit Uzunluklu Alt Ağlara bölme</h3>
         </div>
         <div class="mt-5">
+          Ağ Adı:
           <input class="input-design pl-3" type="text" placeholder="Ağ adını giriniz" v-model="netWorkName">
-          <input class="input-design ml-5 pl-3" type="text" placeholder="Host Sayısını giriniz" v-model="hostCount">
+          <span class="ml-3">Host Sayısı :</span>
+          <input class="input-design  pl-3" type="text" placeholder="Host Sayısını giriniz" v-model="hostCount">
+          <button class="save-button" @click="addNewNetWork">Kaydet</button>
+
         </div>
-        <div class="mt-5  mr-5">
-          <div>
-            <button class="save-button" @click="addNewNetWork">Kaydet</button>
-          </div>
-        </div>
+
       </div>
       <app-table :networks="networkList"></app-table>
       <div>
-        <div class="mt-5">
+        <div class="mt-5 float-right">
           <input class="input-design pl-3" type="text" placeholder="Ip Adresini giriniz" v-model="ipAddress">
           <button class="calculate-button" @click="calculate">Hesapla</button>
         </div>
@@ -44,7 +44,8 @@
                 calculatedNetworkList: [],
                 agAdresleri: [],
                 maskBit: [],
-                isCalculated: false
+                isCalculated: false,
+                genelAltAgAdresleri:0
             }
         },
         components: {
@@ -100,7 +101,10 @@
                     }
                 }
                 console.log(gerekliAgSayisi);
-
+                this.genelAltAgAdresleri=parseInt(subnetMask)+gerekliAgSayisi;
+                var temp = this.genelAltAgAdresleri;
+                this.genelAltAgAdresleri = 32-temp;
+                console.log("genel Alt ağ adresi"+this.genelAltAgAdresleri);
                 for(var i =0; i<ipExps.length ; i++){
                     ipExps[i] = largestDiff+2;
                     console.log(ipExps[i]);
@@ -204,7 +208,7 @@
                             ipBitis: commonFunctions.ipAddressMerger(commonFunctions.addressDesc(commonFunctions.ipAddressParser(this.agAdresleri[i]), 2)),//
                             maxAralık: ipExps[i],
                             yayın: commonFunctions.ipAddressMerger(commonFunctions.addressDesc(commonFunctions.ipAddressParser(this.agAdresleri[i]), 1)),
-                            decMask: commonFunctions.convertToBinary(this.maskBit[i])
+                            decMask: commonFunctions.convertToBinary(this.genelAltAgAdresleri)
                         };
                         this.calculatedNetworkList.push(network);
                     } else {
@@ -216,7 +220,7 @@
                             ipBitis: commonFunctions.ipAddressMerger(commonFunctions.addressDesc(commonFunctions.ipAddressParser(this.agAdresleri[i]), 2)),
                             maxAralık: ipExps[i],
                             yayın: commonFunctions.ipAddressMerger(commonFunctions.addressDesc(commonFunctions.ipAddressParser(this.agAdresleri[i]), 1)),
-                            decMask: commonFunctions.convertToBinary(this.maskBit[i])
+                            decMask: commonFunctions.convertToBinary(this.genelAltAgAdresleri)
                         };
                         this.calculatedNetworkList.push(network);
                     }
@@ -237,16 +241,16 @@
   }
 
   .save-button {
-    margin-left: 453px;
+    margin-left: 25px;
     border: 0;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, .15), 0 2px 3px rgba(0, 0, 0, .2);
     background-color: white;
     width: 100px;
+    height: 35px;
     color: #283e4a;
   }
 
   .calculate-button {
-    margin-left: 300px;
     border: 0;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, .15), 0 2px 3px rgba(0, 0, 0, .2);
     background-color: white;
