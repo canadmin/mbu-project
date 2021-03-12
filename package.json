@@ -12,7 +12,7 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.4",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "jspdf-autotable": "^3.2.9",
     "vue": "^2.6.10",
     "vue2-filters": "^0.8.0-beta.1"
